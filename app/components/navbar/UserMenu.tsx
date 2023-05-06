@@ -25,7 +25,7 @@ const UserMenu = () => {
           onClick={toggleOpen}
           className="flex cursor-pointer flex-row items-center gap-3 rounded-full border-[1px] border-neutral-200 p-4 transition hover:bg-orange-900 md:px-2 md:py-1"
         >
-          <AiOutlineMenu />
+          <AiOutlineMenu size={20} />
           <div className="hidden md:block">
             <Avatar />
           </div>
