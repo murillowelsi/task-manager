@@ -2,6 +2,8 @@
 
 import Image from 'next/image'
 
+import { AiOutlineBug } from 'react-icons/ai'
+
 const Logo = () => {
   return (
     <div className="cursor-pointer flex flex-row gap-2 items-center">
@@ -12,7 +14,12 @@ const Logo = () => {
         height={180}
         width={180}
       />
-      <div className="font-bold text-2xl text-orange-600">Bugs</div>
+      <div className="">
+        <AiOutlineBug
+          className="text-orange-600 hover:text-orange-700"
+          size={30}
+        />
+      </div>
     </div>
   )
 }
