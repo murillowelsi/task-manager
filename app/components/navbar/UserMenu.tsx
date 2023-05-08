@@ -25,7 +25,8 @@ const UserMenu = () => {
         </div>
         <div
           onClick={toggleOpen}
-          className="flex cursor-pointer flex-row items-center gap-3 rounded-full border-[1px] border-neutral-200 p-4 transition hover:bg-orange-900 md:px-2 md:py-1"
+          className="flex cursor-pointer flex-row items-center gap-3 rounded-full border-[1px] border-zinc-400 p-4 transition hover:bg-orange-900 md:px-2 md:py-1"
+          data-test-id="user-menu"
         >
           <AiOutlineMenu size={20} />
           <div className="hidden md:block">
