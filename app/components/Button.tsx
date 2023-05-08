@@ -23,6 +23,7 @@ const Button: React.FC<ButtonProps> = ({
     <button
       onClick={onClick}
       disabled={disabled}
+      data-test-id="register-button"
       className={`
         relative w-full rounded-lg transition hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-70
         ${outline ? 'bg-white' : 'bg-orange-600'}
