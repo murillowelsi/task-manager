@@ -1,13 +1,17 @@
 'use client'
 
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 import { AiOutlineBug } from 'react-icons/ai'
 
 const Logo = () => {
+  const router = useRouter()
+
   return (
-    <div className="cursor-pointer flex flex-row gap-2 items-center">
+    <div className="flex cursor-pointer flex-row items-center gap-2">
       <Image
+        onClick={() => router.push('/')}
         alt="Logo"
         className="hidden md:block"
         src="/images/logo.svg"
