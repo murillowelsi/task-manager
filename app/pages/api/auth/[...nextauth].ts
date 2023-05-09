@@ -26,7 +26,7 @@ export const authOptions: AuthOptions = {
       },
 
       async authorize(credentials) {
-        if (credentials?.email || !credentials?.password) {
+        if (!credentials?.email || !credentials?.password) {
           throw new Error('Invalid credentials')
         }
 

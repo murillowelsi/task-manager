@@ -1,5 +1,7 @@
 import { PT_Sans_Caption } from 'next/font/google'
+import { getCurrentUser } from './actions/getCurrentUser'
 import ClientOnly from './components/ClientOnly'
+import LoginModal from './components/modals/LoginModal'
 import RegisterModal from './components/modals/RegisterModal'
 import NavBar from './components/navbar/NavBar'
 import './globals.css'
@@ -12,18 +14,21 @@ export const metadata = {
   description: 'Manage your tasks for free!',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const currentUser = await getCurrentUser()
+
   return (
     <html lang="en">
       <body className={`font.className bg-zinc-800`}>
         <ClientOnly>
           <ToasterProvider />
+          <LoginModal />
           <RegisterModal />
-          <NavBar />
+          <NavBar currentUser={currentUser} />
         </ClientOnly>
         {children}
       </body>
