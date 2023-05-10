@@ -99,15 +99,15 @@ const LoginModal = () => {
       />
       <div
         className="
-      mt-4 text-center font-light text-neutral-500"
+      mt-4 text-center font-light text-neutral-400"
       >
         <p>
-          First time using Airbnb?
+          First time using Task Manager?
           <span
             onClick={onToggle}
             className="
               cursor-pointer
-              text-neutral-800 
+              text-orange-600 
               hover:underline
             "
           >

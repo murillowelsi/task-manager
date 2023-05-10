@@ -1,99 +1,99 @@
 'use client'
 
 import { usePathname, useSearchParams } from 'next/navigation'
-import { BsSnow } from 'react-icons/bs'
-import { FaSkiing } from 'react-icons/fa'
+import { GiRunningShoe } from 'react-icons/gi'
 import {
-  GiBarn,
-  GiBoatFishing,
-  GiCactus,
-  GiCastle,
-  GiCaveEntrance,
-  GiForestCamp,
-  GiIsland,
-  GiWindmill,
-} from 'react-icons/gi'
-import { IoDiamond } from 'react-icons/io5'
-import { MdOutlineVilla } from 'react-icons/md'
-import { TbBeach, TbMountain, TbPool } from 'react-icons/tb'
+  RiAlarmLine,
+  RiBookLine,
+  RiBriefcaseLine,
+  RiCalendar2Line,
+  RiHome2Line,
+  RiLightbulbFlashLine,
+  RiMedalLine,
+  RiMoneyDollarBoxLine,
+  RiNotification2Line,
+  RiPhoneLine,
+  RiPlaneLine,
+  RiProjector2Line,
+  RiUserLine,
+} from 'react-icons/ri'
 import CategoryBox from '../CategoryBox'
 import Container from '../Container'
 
 export const categories = [
   {
-    label: 'Beach',
-    icon: TbBeach,
-    description: 'This property is close to the beach!',
+    label: 'Work',
+    icon: RiBriefcaseLine,
+    description: 'Tasks related to your work or job.',
   },
   {
-    label: 'Windmills',
-    icon: GiWindmill,
-    description: 'This property is has windmills!',
+    label: 'Personal',
+    icon: RiUserLine,
+    description:
+      'Tasks related to your personal life, such as appointments or hobbies.',
   },
   {
-    label: 'Modern',
-    icon: MdOutlineVilla,
-    description: 'This property is modern!',
+    label: 'Home',
+    icon: RiHome2Line,
+    description: 'Tasks related to taking care of your home or living space.',
   },
   {
-    label: 'Countryside',
-    icon: TbMountain,
-    description: 'This property is in the countryside!',
+    label: 'Health & fitness',
+    icon: GiRunningShoe,
+    description: 'Tasks related to your health and fitness goals.',
   },
   {
-    label: 'Pools',
-    icon: TbPool,
-    description: 'This is property has a beautiful pool!',
+    label: 'Financial',
+    icon: RiMoneyDollarBoxLine,
+    description:
+      'Tasks related to managing your finances, such as paying bills or saving money.',
   },
   {
-    label: 'Islands',
-    icon: GiIsland,
-    description: 'This property is on an island!',
+    label: 'Travel',
+    icon: RiPlaneLine,
+    description: 'Tasks related to planning or preparing for travel.',
   },
   {
-    label: 'Lake',
-    icon: GiBoatFishing,
-    description: 'This property is near a lake!',
+    label: 'School',
+    icon: RiBookLine,
+    description: 'Tasks related to school or academic assignments.',
   },
   {
-    label: 'Skiing',
-    icon: FaSkiing,
-    description: 'This property has skiing activies!',
+    label: 'Projects',
+    icon: RiProjector2Line,
+    description:
+      'Tasks related to managing projects, either personal or professional.',
   },
   {
-    label: 'Castles',
-    icon: GiCastle,
-    description: 'This property is an ancient castle!',
+    label: 'Deadlines',
+    icon: RiAlarmLine,
+    description: 'Tasks with specific deadlines or due dates.',
   },
   {
-    label: 'Caves',
-    icon: GiCaveEntrance,
-    description: 'This property is in a spooky cave!',
+    label: 'Calls/emails',
+    icon: RiPhoneLine,
+    description: 'Tasks related to making calls or sending emails.',
   },
   {
-    label: 'Camping',
-    icon: GiForestCamp,
-    description: 'This property offers camping activities!',
+    label: 'Meetings',
+    icon: RiCalendar2Line,
+    description: 'Tasks related to attending or organizing meetings.',
   },
   {
-    label: 'Arctic',
-    icon: BsSnow,
-    description: 'This property is in arctic environment!',
+    label: 'Reminders',
+    icon: RiNotification2Line,
+    description:
+      'Tasks that serve as reminders for important events or deadlines.',
   },
   {
-    label: 'Desert',
-    icon: GiCactus,
-    description: 'This property is in the desert!',
+    label: 'Goals',
+    icon: RiLightbulbFlashLine,
+    description: 'Tasks related to achieving personal or professional goals.',
   },
   {
-    label: 'Barns',
-    icon: GiBarn,
-    description: 'This property is in a barn!',
-  },
-  {
-    label: 'Lux',
-    icon: IoDiamond,
-    description: 'This property is brand new and luxurious!',
+    label: 'Self-improvement',
+    icon: RiMedalLine,
+    description: 'Tasks related to self-improvement or personal development.',
   },
 ]
 

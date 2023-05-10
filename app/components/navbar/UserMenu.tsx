@@ -1,6 +1,7 @@
 'use client'
 
 import useLoginModal from '@/app/hooks/useLoginModal'
+import useNewTaskModal from '@/app/hooks/useNewTaskModal'
 import useRegisterModal from '@/app/hooks/useRegisterModal'
 import { SafeUser } from '@/app/types'
 import { signOut } from 'next-auth/react'
@@ -20,6 +21,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
 
   const loginModal = useLoginModal()
   const registerModal = useRegisterModal()
+  const newTaskModal = useNewTaskModal()
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -27,11 +29,19 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
     setIsOpen((value) => !value)
   }, [])
 
+  const onNewTask = useCallback(() => {
+    if (!currentUser) {
+      return loginModal.onOpen()
+    }
+
+    return newTaskModal.onOpen()
+  }, [currentUser, newTaskModal, loginModal])
+
   return (
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
         <div
-          onClick={() => {}}
+          onClick={onNewTask}
           className="hidden cursor-pointer rounded-full px-4 py-3 text-sm font-semibold transition hover:bg-orange-900 md:block"
         >
           Add your tasks
@@ -65,7 +75,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
           <div className="flex cursor-pointer flex-col">
             {currentUser ? (
               <>
-                <MenuItem label="My tasks" onClick={() => {}} />
+                <MenuItem label="My tasks" onClick={onNewTask} />
                 <hr className="border-zinc-500" />
                 <MenuItem
                   label="Logout"
