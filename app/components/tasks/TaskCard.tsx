@@ -70,7 +70,7 @@ const TaskCard: React.FC<TaskCardProps> = ({
             top-3
           "
           >
-            <HeartButton listingId={data.id} currentUser={currentUser} />
+            <HeartButton taskId={data.id} currentUser={currentUser} />
           </div>
         </div>
       </div>
