@@ -26,9 +26,9 @@ const Button: React.FC<ButtonProps> = ({
       data-test-id="register-button"
       className={`
         relative w-full rounded-lg transition hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-70
-        ${outline ? 'bg-white' : 'bg-orange-600'}
-        ${outline ? 'border-black' : 'border-orange-600'}
-        ${outline ? 'text-black' : 'text-white'}
+        ${outline ? 'bg-transparent' : 'bg-orange-600'}
+        ${outline ? 'border-orange-500' : 'border-orange-600'}
+        ${outline ? 'text-orange-500' : 'text-white'}
         ${small ? 'py-1' : 'py-3'}
         ${small ? 'text-sm' : 'text-md'}
         ${small ? 'font-light' : 'font-semibold'}
