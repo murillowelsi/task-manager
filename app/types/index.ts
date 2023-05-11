@@ -1,4 +1,4 @@
-import { User } from '@prisma/client'
+import { Account, Task, User } from '@prisma/client'
 
 export type SafeUser = Omit<
   User,
@@ -8,3 +8,7 @@ export type SafeUser = Omit<
   updatedAt: string
   emailVerified: string | null
 }
+
+export type SafeTask = Task
+
+export type SafeAccount = Account

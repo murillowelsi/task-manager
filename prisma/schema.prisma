@@ -16,8 +16,10 @@ model User {
   hashedPassword String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  favoriteIds String[] @db.ObjectId
 
-  accounts Account[]
+  tasks           Task[]
+  accounts        Account[]
 }
 
 model Account {
@@ -37,4 +39,16 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+}
+
+model Task {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  title String
+  description String
+  createdAt DateTime @default(now())
+  category String
+  completed Boolean
+  userId String @db.ObjectId
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

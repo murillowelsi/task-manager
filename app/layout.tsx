@@ -1,5 +1,5 @@
 import { PT_Sans_Caption } from 'next/font/google'
-import { getCurrentUser } from './actions/getCurrentUser'
+import getCurrentUser from './actions/getCurrentUser'
 import ClientOnly from './components/ClientOnly'
 import LoginModal from './components/modals/LoginModal'
 import NewTaskModal from './components/modals/NewTaskModal'
