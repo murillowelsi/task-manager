@@ -1,26 +1,28 @@
 'use client'
 
 import useNewTaskModal from '@/app/hooks/useNewTaskModal'
+import axios from 'axios'
+import { useRouter } from 'next/navigation'
 import { useMemo, useState } from 'react'
-import { FieldValues, useForm } from 'react-hook-form'
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
 import Heading from '../Heading'
+import Input from '../Input'
 import CategoryInput from '../inputs/CategoryInput'
 import { categories } from '../navbar/Categories'
 import Modal from './Modal'
 
 enum STEPS {
   CATEGORY = 0,
-  LOCATION = 1,
-  INFO = 2,
-  IMAGES = 3,
-  DESCRIPTION = 4,
-  PRICE = 5,
+  DESCRIPTION = 1,
 }
 
 const NewTaskModal = () => {
   const newTaskModal = useNewTaskModal()
+  const router = useRouter()
 
   const [step, setStep] = useState(STEPS.CATEGORY)
+  const [isLoading, setIsLoading] = useState(false)
 
   const {
     register,
@@ -32,12 +34,7 @@ const NewTaskModal = () => {
   } = useForm<FieldValues>({
     defaultValues: {
       category: '',
-      location: null,
-      guestCount: 1,
-      roomCount: 1,
-      bathroomCount: 1,
-      imageSrc: '',
-      price: 1,
+      completed: false,
       title: '',
       description: '',
     },
@@ -61,8 +58,30 @@ const NewTaskModal = () => {
     setStep((value) => value + 1)
   }
 
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    if (step !== STEPS.DESCRIPTION) {
+      return onNext()
+    }
+
+    setIsLoading(true)
+
+    axios
+      .post('/api/tasks', data)
+      .then(() => {
+        toast.success('Listing created!')
+        router.refresh()
+        reset()
+        setStep(STEPS.CATEGORY)
+        newTaskModal.onClose()
+      })
+      .catch(() => {
+        toast.error('Something went wrong')
+      })
+      .finally(() => setIsLoading(false))
+  }
+
   const actionLabel = useMemo(() => {
-    if (step === STEPS.PRICE) {
+    if (step === STEPS.DESCRIPTION) {
       return 'Create'
     }
     return 'Next'
@@ -81,7 +100,7 @@ const NewTaskModal = () => {
         title="Which of these best describes your task?"
         subtitle="Pick a category"
       />
-      <div className="grid max-h-[50vh] grid-cols-1 gap-3 overflow-y-auto md:grid-cols-3">
+      <div className="grid max-h-[50vh] grid-cols-1 gap-3 overflow-y-auto sm:grid-cols-2 md:grid-cols-3">
         {categories.map((item) => (
           <div key={item.label} className="col-span-1">
             <CategoryInput
@@ -96,11 +115,38 @@ const NewTaskModal = () => {
     </div>
   )
 
+  if (step === STEPS.DESCRIPTION) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          title="How would you describe your task?"
+          subtitle="Short and sweet works best!"
+        />
+        <Input
+          id="title"
+          label="Title"
+          register={register}
+          disabled={isLoading}
+          errors={errors}
+        />
+        <hr />
+        <Input
+          id="description"
+          label="Description"
+          register={register}
+          disabled={isLoading}
+          errors={errors}
+          required
+        />
+      </div>
+    )
+  }
+
   return (
     <Modal
       isOpen={newTaskModal.isOpen}
       onClose={newTaskModal.onClose}
-      onSubmit={newTaskModal.onClose}
+      onSubmit={handleSubmit(onSubmit)}
       actionLabel={actionLabel}
       secondaryActionLabel={secondaryActionLabel}
       secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}

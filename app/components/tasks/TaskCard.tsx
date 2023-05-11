@@ -47,20 +47,19 @@ const TaskCard: React.FC<TaskCardProps> = ({
       <div className="flex w-full flex-col gap-2">
         <div
           className="
-            relative 
-            aspect-square 
-            w-full 
-            overflow-hidden 
+            relative
+            aspect-square
+            w-full
+            overflow-hidden
             rounded-xl
           "
         >
           <div
             className="
-              h-full 
-              w-full 
-              object-cover 
-              transition 
-              group-hover:scale-110
+              h-full
+              w-full
+              rounded-2xl
+              bg-zinc-800
             "
           />
           <div
@@ -73,6 +72,10 @@ const TaskCard: React.FC<TaskCardProps> = ({
             <HeartButton taskId={data.id} currentUser={currentUser} />
           </div>
         </div>
+        <div className="text-lg font-semibold text-neutral-300">
+          {data.title}
+        </div>
+        <div className="font-light text-neutral-400">{data.category}</div>
       </div>
       {onAction && actionLabel && (
         <Button

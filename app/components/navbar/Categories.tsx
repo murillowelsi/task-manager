@@ -1,6 +1,7 @@
 'use client'
 
 import { usePathname, useSearchParams } from 'next/navigation'
+import { AiOutlineHeart } from 'react-icons/ai'
 import { GiRunningShoe } from 'react-icons/gi'
 import {
   RiAlarmLine,
@@ -38,9 +39,14 @@ export const categories = [
     description: 'Tasks related to taking care of your home or living space.',
   },
   {
-    label: 'Health & fitness',
+    label: 'Fitness',
     icon: GiRunningShoe,
-    description: 'Tasks related to your health and fitness goals.',
+    description: 'Tasks related to your fitness goals.',
+  },
+  {
+    label: 'Health',
+    icon: AiOutlineHeart,
+    description: 'Tasks related to your health goals.',
   },
   {
     label: 'Financial',
@@ -91,7 +97,7 @@ export const categories = [
     description: 'Tasks related to achieving personal or professional goals.',
   },
   {
-    label: 'Self-improvement',
+    label: 'Growth',
     icon: RiMedalLine,
     description: 'Tasks related to self-improvement or personal development.',
   },

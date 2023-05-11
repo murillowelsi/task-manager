@@ -9,7 +9,7 @@ export default async function Home() {
   const tasks = await getTasks()
   const currentUser = await getCurrentUser()
 
-  const isEmpty = true
+  // const isEmpty = true
 
   if (tasks.length === 0) {
     return (
@@ -31,8 +31,8 @@ export default async function Home() {
             sm:grid-cols-2 
             md:grid-cols-3
             lg:grid-cols-4
-            xl:grid-cols-5
-            2xl:grid-cols-6
+            xl:grid-cols-4
+            2xl:grid-cols-4
           "
         >
           {tasks.map((task: any) => (

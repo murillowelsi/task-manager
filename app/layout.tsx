@@ -24,7 +24,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`font.className bg-zinc-800`}>
+      <body className={`${font.className} bg-zinc-900`}>
         <ClientOnly>
           <ToasterProvider />
           <NewTaskModal />

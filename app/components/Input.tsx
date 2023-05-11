@@ -1,7 +1,6 @@
 'use client'
 
 import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form'
-import { BiEuro } from 'react-icons/bi'
 
 interface InputProps {
   id: string
@@ -26,9 +25,6 @@ const Input: React.FC<InputProps> = ({
 }) => {
   return (
     <div className="relative w-full">
-      {formatPrice && (
-        <BiEuro size={24} className="absolute left-2 top-5 text-neutral-700" />
-      )}
       <input
         id={id}
         disabled={disabled}
@@ -40,16 +36,15 @@ const Input: React.FC<InputProps> = ({
           w-full
           rounded-md
           border-2
-          bg-white
+          bg-transparent
           p-4
           pt-6
           font-light
-          text-zinc-500
+          text-zinc-300
           outline-none
           transition
           disabled:cursor-not-allowed
-          disabled:opacity-70
-          ${formatPrice ? 'pl-9' : 'pl-4'}
+          disabled:opacity-70 
           ${errors[id] ? 'border-rose-500' : 'border-neutral-300'}
           ${errors[id] ? 'focus:border-rose-500' : 'focus:border-black'}
         `}
@@ -62,7 +57,7 @@ const Input: React.FC<InputProps> = ({
         peer-placeholder-shown:scale-100
         peer-focus:-translate-y-4    
         peer-focus:scale-75  
-        ${errors[id] ? 'text-rose-500' : 'text-zinc-700'}  
+        ${errors[id] ? 'text-rose-500' : 'text-zinc-400'}  
       `}
       >
         {label}
