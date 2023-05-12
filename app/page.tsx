@@ -23,16 +23,9 @@ export default async function Home() {
     <ClientOnly>
       <Container>
         <div
-          className="
-            grid
-            grid-cols-1 
+          className="flex flex-row
             gap-8 
             pt-24 
-            sm:grid-cols-2 
-            md:grid-cols-3
-            lg:grid-cols-4
-            xl:grid-cols-4
-            2xl:grid-cols-4
           "
         >
           {tasks.map((task: any) => (

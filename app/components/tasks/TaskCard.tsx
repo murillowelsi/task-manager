@@ -4,8 +4,8 @@ import { useRouter } from 'next/navigation'
 import { useCallback } from 'react'
 
 import { SafeTask, SafeUser } from '@/app/types'
+import { format } from 'date-fns'
 import Button from '../Button'
-import HeartButton from '../HeartButton'
 
 interface TaskCardProps {
   data: SafeTask
@@ -42,40 +42,23 @@ const TaskCard: React.FC<TaskCardProps> = ({
   return (
     <div
       onClick={() => router.push(`/tasks/${data.id}`)}
-      className="group col-span-1 cursor-pointer"
+      className="cursor-pointer"
     >
-      <div className="flex w-full flex-col gap-2">
-        <div
-          className="
-            relative
-            aspect-square
-            w-full
-            overflow-hidden
-            rounded-xl
-          "
-        >
-          <div
-            className="
-              h-full
-              w-full
-              rounded-2xl
-              bg-zinc-800
-            "
-          />
-          <div
-            className="
-            absolute
-            right-3
-            top-3
-          "
-          >
-            <HeartButton taskId={data.id} currentUser={currentUser} />
+      <div className="mx-auto max-w-lg overflow-hidden rounded-xl border border-zinc-400 bg-zinc-800 shadow-md">
+        <div className="lg:flex">
+          <div className="p-8">
+            <div className="text-sm font-semibold uppercase tracking-wide text-white">
+              {data.title}
+            </div>
+            <p className="mt-1 block text-sm leading-tight text-orange-600">
+              {`${format(data.createdAt, 'PP')}`}
+            </p>
+            <p className="text-white">{data.category}</p>
+            <p className="mt-2 font-extralight text-neutral-300">
+              {data.description}
+            </p>
           </div>
         </div>
-        <div className="text-lg font-semibold text-neutral-300">
-          {data.title}
-        </div>
-        <div className="font-light text-neutral-400">{data.category}</div>
       </div>
       {onAction && actionLabel && (
         <Button
