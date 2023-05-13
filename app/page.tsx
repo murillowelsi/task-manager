@@ -9,8 +9,6 @@ export default async function Home() {
   const tasks = await getTasks()
   const currentUser = await getCurrentUser()
 
-  // const isEmpty = true
-
   if (tasks.length === 0) {
     return (
       <ClientOnly>
@@ -22,12 +20,7 @@ export default async function Home() {
   return (
     <ClientOnly>
       <Container>
-        <div
-          className="flex flex-row
-            gap-8 
-            pt-24 
-          "
-        >
+        <div className="mt-24 aspect-video w-full columns-2 gap-2 md:columns-3 lg:columns-4">
           {tasks.map((task: any) => (
             <TaskCard currentUser={currentUser} key={task.id} data={task} />
           ))}

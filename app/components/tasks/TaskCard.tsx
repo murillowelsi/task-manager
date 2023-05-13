@@ -42,7 +42,7 @@ const TaskCard: React.FC<TaskCardProps> = ({
   return (
     <div
       onClick={() => router.push(`/tasks/${data.id}`)}
-      className="cursor-pointer"
+      className="group  w-full cursor-pointer px-1 py-2"
     >
       <div className="mx-auto max-w-lg overflow-hidden rounded-xl border border-zinc-400 bg-zinc-800 shadow-md">
         <div className="lg:flex">
