@@ -6,6 +6,7 @@ import { useCallback } from 'react'
 import { SafeTask, SafeUser } from '@/app/types'
 import { format } from 'date-fns'
 import Button from '../Button'
+import HeartButton from '../HeartButton'
 
 interface TaskCardProps {
   data: SafeTask
@@ -41,22 +42,29 @@ const TaskCard: React.FC<TaskCardProps> = ({
 
   return (
     <div
+      className="group relative w-full cursor-pointer px-2 py-2"
       onClick={() => router.push(`/tasks/${data.id}`)}
-      className="group  w-full cursor-pointer px-1 py-2"
     >
-      <div className="mx-auto max-w-lg overflow-hidden rounded-xl border border-zinc-400 bg-zinc-800 shadow-md">
-        <div className="lg:flex">
-          <div className="p-8">
-            <div className="text-sm font-semibold uppercase tracking-wide text-white">
-              {data.title}
-            </div>
-            <p className="mt-1 block text-sm leading-tight text-orange-600">
+      <div className="absolute right-3 top-3 mx-2 mt-2">
+        <HeartButton taskId={data.id} currentUser={currentUser} />
+      </div>
+      <div className="mx-auto max-w-lg overflow-hidden rounded-2xl bg-zinc-800 shadow-md hover:border-[1px] hover:border-orange-500">
+        <div className="p-6">
+          <div className="text-sm font-semibold uppercase tracking-wide text-white">
+            {data.title}
+          </div>
+          <div>
+            <p className="mb-2 block text-sm leading-tight text-orange-500">
               {`${format(data.createdAt, 'PP')}`}
             </p>
-            <p className="text-white">{data.category}</p>
-            <p className="mt-2 font-extralight text-neutral-300">
+            <p className="mt-4 font-mono font-thin text-neutral-300">
               {data.description}
             </p>
+          </div>
+          <div className="mt-8">
+            <span className="whitespace-nowrap rounded-full bg-orange-100 px-2.5 py-0.5 text-sm text-orange-700">
+              {data.category}
+            </span>
           </div>
         </div>
       </div>
