@@ -50,14 +50,14 @@ const TaskCard: React.FC<TaskCardProps> = ({
       </div>
       <div className="mx-auto max-w-lg overflow-hidden rounded-2xl bg-zinc-800 shadow-md hover:border-[1px] hover:border-orange-500">
         <div className="p-6">
-          <div className="text-sm font-semibold uppercase tracking-wide text-white">
+          <div className="text-md py-1 font-semibold uppercase tracking-wide text-white">
             {data.title}
           </div>
           <div>
             <p className="mb-2 block text-sm leading-tight text-orange-500">
               {`${format(data.createdAt, 'PP')}`}
             </p>
-            <p className="mt-4 font-mono font-thin text-neutral-300">
+            <p className="mt-4 font-thin text-neutral-300">
               {data.description}
             </p>
           </div>
